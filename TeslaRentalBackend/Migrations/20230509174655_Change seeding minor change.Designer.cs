@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeslaRentalBackend.Entities;
 
@@ -11,9 +12,11 @@ using TeslaRentalBackend.Entities;
 namespace TeslaRentalBackend.Migrations
 {
     [DbContext(typeof(TeslaRentalDbContext))]
-    partial class TeslaRentalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230509174655_Change seeding minor change")]
+    partial class Changeseedingminorchange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

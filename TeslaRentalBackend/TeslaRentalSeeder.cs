@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TeslaRentalBackend.Entities;
 using TeslaRentalBackend.Enum;
 
@@ -5,34 +6,12 @@ namespace TeslaRentalBackend;
 
 public static class TeslaRentalSeeder
 {
-    public static void Seed(TeslaRentalDbContext dbContext)
+    public static void Seed(ModelBuilder modelBuilder)
     {
-        if (dbContext.Database.CanConnect())
-        {
-            if (!dbContext.Countries.Any())
-            {
-                var countries = GetCountries();
+        modelBuilder.Entity<Location>().HasData(GetLocations());
+        modelBuilder.Entity<Country>().HasData(GetCountries());
+        modelBuilder.Entity<Vehicle>().HasData(GetVehicles());
 
-                dbContext.Countries.AddRange(countries);
-                dbContext.SaveChanges();
-            }
-
-            if (!dbContext.Locations.Any())
-            {
-                var locations = GetLocations();
-
-                dbContext.Locations.AddRange(locations);
-                dbContext.SaveChanges();
-            }
-
-            if (!dbContext.Vehicles.Any())
-            {
-                var vehicles = GetVehicles();
-
-                dbContext.Vehicles.AddRange(vehicles);
-                dbContext.SaveChanges();
-            }
-        }
     }
 
     private static IEnumerable<Country> GetCountries()

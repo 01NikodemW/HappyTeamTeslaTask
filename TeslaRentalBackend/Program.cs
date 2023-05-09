@@ -57,16 +57,20 @@ builder.Services.AddScoped<IValidator<AvailableVehiclesRequestDto>, AvailableVeh
 
 
 builder.Services.AddDbContext<TeslaRentalDbContext>
-    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("TeslaRentalDbConnection")));
+    (options => {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("TeslaRentalDbConnection"));
+    });
+
 
 
 var app = builder.Build();
 
-
-using (var scope = app.Services.CreateScope())
+Thread.Sleep(15_000);
+var provider = builder.Services.BuildServiceProvider();
+using(var scope = provider.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<TeslaRentalDbContext>();
-    TeslaRentalSeeder.Seed(dbContext);
+    var db = scope.ServiceProvider.GetRequiredService<TeslaRentalDbContext>();
+    db.Database.Migrate();
 }
 
 if (app.Environment.IsDevelopment())

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeslaRentalBackend.Entities;
 
@@ -11,9 +12,11 @@ using TeslaRentalBackend.Entities;
 namespace TeslaRentalBackend.Migrations
 {
     [DbContext(typeof(TeslaRentalDbContext))]
-    partial class TeslaRentalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230509174316_Change seeding")]
+    partial class Changeseeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,6 +38,43 @@ namespace TeslaRentalBackend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d28888e9-2ba9-473a-a40f-e38cb54f9b35"),
+                            Name = "Palma Airport"
+                        },
+                        new
+                        {
+                            Id = new Guid("da2fd609-d754-4feb-8acd-c4f9ff13ba96"),
+                            Name = "Palma City Center"
+                        },
+                        new
+                        {
+                            Id = new Guid("2902b665-1190-4c70-9915-b9c2d7680450"),
+                            Name = "Alcudia"
+                        },
+                        new
+                        {
+                            Id = new Guid("102b566b-ba1f-404c-b2df-e2cde39ade09"),
+                            Name = "Manacor"
+                        });
+                });
+
+            modelBuilder.Entity("TeslaRentalBackend.Entities.Location", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
 
                     b.HasData(
                         new
@@ -171,43 +211,6 @@ namespace TeslaRentalBackend.Migrations
                         {
                             Id = new Guid("81d1c534-8c39-4c68-b1bb-5d035d66e80e"),
                             Name = "Sweden"
-                        });
-                });
-
-            modelBuilder.Entity("TeslaRentalBackend.Entities.Location", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Locations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("d28888e9-2ba9-473a-a40f-e38cb54f9b35"),
-                            Name = "Palma Airport"
-                        },
-                        new
-                        {
-                            Id = new Guid("da2fd609-d754-4feb-8acd-c4f9ff13ba96"),
-                            Name = "Palma City Center"
-                        },
-                        new
-                        {
-                            Id = new Guid("2902b665-1190-4c70-9915-b9c2d7680450"),
-                            Name = "Alcudia"
-                        },
-                        new
-                        {
-                            Id = new Guid("102b566b-ba1f-404c-b2df-e2cde39ade09"),
-                            Name = "Manacor"
                         });
                 });
 

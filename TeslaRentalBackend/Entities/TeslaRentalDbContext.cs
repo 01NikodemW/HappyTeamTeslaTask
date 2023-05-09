@@ -17,6 +17,7 @@ public class TeslaRentalDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        TeslaRentalSeeder.Seed(modelBuilder);
         modelBuilder.Entity<Reservation>()
             .HasOne(r => r.RentalLocation)
             .WithMany()

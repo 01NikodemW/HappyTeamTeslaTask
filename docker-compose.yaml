@@ -1,0 +1,26 @@
+version: "3.2"
+services:
+  frontend:
+    image: test-rental-frontend
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+
+  backend:
+    image: test-rental-backend
+    ports:
+      - "5070:80"
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "M4CNH6XA#LOX2T4!@#A#"
+      ACCEPT_EULA: "Y"
