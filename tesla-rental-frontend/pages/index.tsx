@@ -72,6 +72,13 @@ export default function Home() {
     setSnackbarMessage("");
   };
 
+  const disableSearch =
+    !rentalDate ||
+    !returnDate ||
+    rentalDate > returnDate ||
+    returnDate < new Date() ||
+    rentalDate < new Date();
+
   return (
     <>
       <Box
@@ -265,7 +272,7 @@ export default function Home() {
                     color: "white",
                   },
                 }}
-                disabled={!rentalDate || !returnDate}
+                disabled={disableSearch}
                 onClick={() => {
                   if (rentalDate && returnDate) {
                     if (!isLoggedIn) {
