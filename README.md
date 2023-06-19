@@ -1,13 +1,10 @@
-# HappyTeamTeslaTask
-## Rozwiązanie zadania rekrutacyjnego.
+# Tesla task
 
 1. Uruchomienie programu
 
 Aby uruchomić program wystarczy wykonać polecenie **docker-compose up**
 
-2. Założenia dotycząca zadania
-
-Jako że zadanie zostało luźno zdefiniowane przyjąłem kilka założeń w celu stworzenia rozwiązania
+2. Założenia zadania
 
 - Samochody wypożyczane są na pełne dni
 - Każdy samochód zawiera cenę wypożyczenia na jeden dzień, przez co jestem w stanie wyznaczyć cenę całkowitą wypożyczenia
@@ -27,5 +24,5 @@ Na samym końcu utworzyłem tabelę przechowującą rezerwację, której każdy
 
 4. Dodatkowe elementy rozwiązania
 
-W ramach rozwiązania zadania utworzyłem również front aplikacji w technologi React, jako bibliotekę komponentów wykorzystałem Materiał UI, który pozwolił mi w szybki sposób zbudować UI aplikacji. Dodatkowo do wszelkie formularze są obsługiwane z wykorzystaniem formika. Do zarządzania stanem nie wykorzystałem żadnej zewnętrznej biblioteki jak redux bo uznałem, że byłby do przerost formy nad treścią. Dokonałem również konteneryzacji aplikacji (Ustawienie Thread.Sleep(15_000) w klasie Program.cs spowodowane było zbyt szybkim startowanie kontenera z sql server i niemocą poczekania na niego w docker compose za pomocą zależności)
+W ramach rozwiązania zadania utworzyłem również front aplikacji w technologi React, jako bibliotekę komponentów wykorzystałem Material UI, która pozwoliła mi w szybki sposób zbudować UI aplikacji. Dodatkowo do wszelkie formularze są obsługiwane z wykorzystaniem formika. Do zarządzania stanem nie wykorzystałem żadnej zewnętrznej biblioteki jak redux bo uznałem, że byłby do przerost formy nad treścią. Dokonałem również konteneryzacji aplikacji (Ustawienie Thread.Sleep(15_000) w klasie Program.cs spowodowane było zbyt szybkim startowanie kontenera z sql server i niemocą poczekania na niego w docker compose za pomocą zależności)
 
