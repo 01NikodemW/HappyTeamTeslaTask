@@ -1,4 +1,4 @@
-# Tesla task
+# Tesla Rental App
 
 1. Uruchomienie programu
 
